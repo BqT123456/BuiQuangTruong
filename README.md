@@ -23,13 +23,24 @@ https://example.com/api/{found_TSLA_sell_id}?include={found_TSLA_sell_id}
 => Output: 
 curl -s https://example.com/api/12346?include=12346
 curl -s https://example.com/api/12362?include=12362
+
 ------------------------------------------------------------------------------------------------------
 Problem 2:
-- The following tools are installed on the machine and can work normally: free,
+
+- Assume that the this is how crypto exchange system works:
+Ref: https://medium.com/coinmonks/how-does-a-centralised-crypto-exchange-actually-work-84a574fe0a1
+
+- The solution will cover Trading Engine system design.
+- For simplification, failure due to networking will not be weighted as high priority. Therefore, configuration for networking is neglected.
+
+------------------------------------------------------------------------------------------------------
+Problem 3:
+- The following tools are installed on the machine and can work normally: free
+
+- Assume that the scenario happens in production environment
  
-
-
-
+- Assume that the previous DevOps engineer followed the below document to optimize the server configuration:
+https://blog.nginx.org/blog/optimizing-web-servers-for-high-throughput-and-low-latency
 
 ## Submission ##
 You can either provide a link to an online repository, attach the solution in your application, or whichever method you prefer. We're cool as long as we can view your solution without any pain.
