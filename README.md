@@ -41,6 +41,3 @@ Problem 3:
  
 - Assume that the previous DevOps engineer followed the below document to optimize the server configuration:
 https://blog.nginx.org/blog/optimizing-web-servers-for-high-throughput-and-low-latency
-
-## Submission ##
-You can either provide a link to an online repository, attach the solution in your application, or whichever method you prefer. We're cool as long as we can view your solution without any pain.
