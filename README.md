@@ -2,7 +2,7 @@
 Problem 1:
 - The machine has installed jq command with "sudo apt install jq". Somehow "sudo snap install jq" may lead to error "jq: error: Could not open file ./transaction-log.txt: Permission denied".
 
--The following tools are installed on the machine and can work normally: curl, xargs .
+- The following tools are installed on the machine and can work normally: curl, xargs .
 
 - The ./transaction-log.txt has enough file permission to be executed by the cli.
 
