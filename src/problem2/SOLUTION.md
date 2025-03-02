@@ -12,23 +12,25 @@ Components and Their Roles:
 
 	+ Role: DNS & Traffic Routing.
 
-	+ Reason to choose: Global traffic distribution, fault tolerance.
-	=> Alternative: Cloudflare DNS
+	+ Reason to choose: Global traffic distribution, fault tolerance.<br/>
+	<ins>**=> Alternative: Cloudflare DNS**</ins>
 	
 - Autoscaling Group EC2: 
 	
 	+ Role: Runs the server (for authentication) and order matching system (Executes buy/sell orders).
 	+ Reason to choose: Maintain high ability. Easy to deploy.
 	
-	=> Alternative: ECS (Fargate) - Microservices Layer to scale automatically serverlessly, move from based on demand to pay-as-you-go to save cost. 
-	=> Alternative: Amazon EKS (Elastic Kubernetes Service) to run the order matching system using container orchestration for easier to manage resources, maintain high availability and scalability for the matching engine workloads
-	=> Alternative: add AWS Lambda to handle short-duration functions.
+	<ins>**=> Alternative:**</ins><br/>
+	+ ECS (Fargate) - Microservices Layer to scale automatically serverlessly, move from based on demand to pay-as-you-go to save cost.
+  	+ Amazon EKS (Elastic Kubernetes Service) to run the order matching system using container orchestration for easier to manage resources, maintain high availability and scalability for the matching engine workloads.
+	+ Add AWS Lambda to handle short-duration functions.
 	
 - Amazon MSK (Managed Streaming for Apache Kafka):
 
-	+ Role: Acts as an event streaming platform for high-throughput data. Handles real-time streams of orders and market events, low-latency data streams for trading platforms.
+	+ Role: Acts as an event streaming platform for high-throughput data. 
+	+ Reason to choose: Handles real-time streams of orders and market events, low-latency data streams for trading platforms.
 	
-	=> Alternative: AWS Kinesis if the system does not need to be compatible with Kafka eco-system and the system has low data throughput.
+	<ins>**=> Alternative: AWS Kinesis if the system does not need to be compatible with Kafka eco-system and the system has low data throughput.**</ins>
 
 - Aurora PostgreSQL:
 
@@ -37,14 +39,14 @@ Components and Their Roles:
 
 	+ Reason to choose: Offers high performance, scalability, and durability for transactional data. Using serverless Database to gain cost effective.
 	
-	=> Alternative: AWS DynamoDB: Fully managed NoSQL database with high performance.
+	<ins>**=> Alternative: AWS DynamoDB: Fully managed NoSQL database with high performance.**</ins>
 	
 - Amazon S3 + CloudFront:
 
 	+ Role: Stores and delivers static assets for market data display and logs from services.
 
-	+ Reason to choose: S3 provides durable storage; CloudFront accelerates content delivery globally. S3 buckets are located in different AZ to maintain backup (resilient to failures)
-
+	+ Reason to choose: S3 provides durable storage; CloudFront accelerates content delivery globally. S3 buckets are located in different AZ to maintain backup (resilient to failures)**</ins>
+	
 - CloudWatch:
 
 	+ Role: Collects logs and metrics across the system.
@@ -53,8 +55,8 @@ Components and Their Roles:
 						Allows setting thresholds to trigger alarms and automate responses.
 						Provides dashboards and insights to facilitate proactive management.
 
-	=> Alternative: third-party tools which have advanced features and cross-environment monitoring. 
-	
+	<ins>**=> Alternative: third-party tools which have advanced features and cross-environment monitoring.**</ins>
+--------------------------------------------------------------------------------------------------------
 Plans for Scaling When the Product Grows Beyond Current Setup
 
 - Apply GitOps for version integrity.
@@ -82,13 +84,13 @@ Plans for Scaling When the Product Grows Beyond Current Setup
 - Security and Compliance
 
 	+ Implement AWS WAF:
-
+----------------------------------------------------------------------------------
 Performance Optimization
 
 - Profiling Tools:
 
 	+ Use AWS X-Ray and other APM tools to identify performance bottlenecks.
-
+--------------------------------------------------------------------------------
 Cost Management
 - Monitoring and Reporting:
 
