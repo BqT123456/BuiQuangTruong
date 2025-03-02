@@ -10,7 +10,7 @@ Problem 1:
 
 - It is understood that ":order_id" should be replaced in "https://example.com/api/:order_id" with IDs from a transaction-log.txt.
 
--It is understood that /output.txt and ./transaction-log.txt are in the same folder.
+- It is understood that /output.txt and ./transaction-log.txt are in the same folder.
 
 - The solution just covered only a single API URL, it is not flexible enough for changes. If your API URL contains a placeholder pattern "{found_id}" in several places, using a generic placeholder replacement can replace all instances — even those you didn't intend to change. This can result in malformed URLs, incorrect API calls, or unexpected data retrieval.
 
