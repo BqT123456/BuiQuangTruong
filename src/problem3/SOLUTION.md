@@ -44,6 +44,7 @@ Step 2: Identify Top Memory-Consuming Processes
 	
 	+ List Processes and find Z status: ps aux | grep Z
 	Purpose: Find if there is any zombie process.
+	![Zombies](https://github.com/user-attachments/assets/020f3327-98b6-41d1-aa97-9a23a985f095)
 
 	+ Check Services: sudo systemctl list-units --type=service --state=running
 	Purpose: Find if there are any unnecessary services running.
@@ -162,7 +163,7 @@ Step 6: Check for impacts from other components in the system
 	
 	+ Resource Exhaustion: High number of connections consume memory.
 
--Troubleshoot steps:
+- Troubleshoot steps:
 	
 	+ Replicate the system to dev environment.
 	
@@ -222,9 +223,10 @@ Step 8: Analyze Traffic Patterns for High Load or DDoS
 
 	+ Service Degradation: Slow or unresponsive service for legitimate users.
 
--Troubleshoot steps:
+- Troubleshoot steps:
 
-	+ Review Access Logs for Anomalies: sudo tail -n 1000 /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sort -nr | head
+	+ Review Access Logs for Anomalies:</br>
+```sudo tail -n 1000 /var/log/nginx/access.log | awk '{print $1}' | sort | uniq -c | sort -nr | head```
 
 	+ Identify Malicious IPs: Look for IPs with excessive requests.
 
@@ -236,7 +238,7 @@ Step 8: Analyze Traffic Patterns for High Load or DDoS
 
 	Enhance system's configuration to prevent attack to server.
 	Implement Rate Limiting: Configure nginx to limit the rate of incoming requests from each clients.
-
+```
 	http {
 	    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
 	}
@@ -245,7 +247,7 @@ Step 8: Analyze Traffic Patterns for High Load or DDoS
 		limit_req zone=mylimit burst=20;
 	    }
 	}
-
+```
 	Configure Firewall Rules: Deny malcious IPs
 
 	Consider DDoS Protection Services: Use services like Cloudflare or AWS Shield.
