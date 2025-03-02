@@ -1,5 +1,7 @@
 Provide your solution here:
-
+![System](https://github.com/user-attachments/assets/979054ed-9076-4877-bd87-5d3cadf5b387)
+	
+PNG
 Components and Their Roles:
 
 - Users:
