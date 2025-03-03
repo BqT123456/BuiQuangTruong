@@ -37,7 +37,7 @@ Ref: https://medium.com/coinmonks/how-does-a-centralised-crypto-exchange-actuall
 
 - The solution will cover Trading Engine system design. Refer:https://www.around25.com/blog/building-a-trading-engine-for-a-crypto-exchange
   
-- For simplification and time limitation, Roles and Network configurations are not listed but will be explained briefly. </br>
+- For simplification and time limitation, the plan for choosing which hardware, database, ELB,... are neglected. Also, Roles and Network configurations are not listed but will be explained briefly. </br>
    + Role: Apply "Least-privilege permission".
    + Network: Apply ELB in public subnet to protect our resource to be not exposed to the Internet.
     * In-direction: Resource -> NAT Gateway -> Internet.
