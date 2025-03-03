@@ -90,6 +90,13 @@ Performance Optimization
 - Profiling Tools:
 
 	+ Use AWS X-Ray and other APM tools to identify performance bottlenecks.
+- If we cannot have enough budget to scale, optimize our system, may apply work around if needed. Follow the data daily to check for bottleneck. Refer the below graph:
+
+  ![image](https://github.com/user-attachments/assets/f0570738-a1c7-437d-89df-6b6eb0322e69)
+  ![image](https://github.com/user-attachments/assets/6599862d-66a1-40a8-befd-4fe09db10904)
+  - Refer:
+	+ https://viblo.asia/p/performance-optimization-103-nghe-thuat-tim-kiem-bottleneck-jvEla784Kkw </br>
+	+ https://viblo.asia/p/performance-optimization-101-nhung-cau-hoi-co-ban-Qbq5Q9BE5D8
 --------------------------------------------------------------------------------
 Cost Management
 - Monitoring and Reporting:
@@ -104,3 +111,4 @@ Cost Management
 
 	+ Compute Savings Plans: Commit to consistent compute usage across AWS to receive discounts. Mix Spot Instance and Reserved instance for reducing cost.
 
+- Business coordinate
