@@ -13,10 +13,12 @@ Step 1: Verify the High Memory Usage
 
 - Troubleshoot steps:
 
-	+ Manually Check Memory Usage: free -h
+	+ Manually Check Memory Usage:
+	```free -h```
 	Purpose: Confirms current memory usage, including total, used, and available memory.
 
-	+ Review System Processes: top -b -o +%MEM | head -n 15
+	+ Review System Processes:
+	```top -b -o +%MEM | head -n 15```
 	Purpose: Identifies the top processes consuming memory.
 
 - Recovery steps: This step is carried only if there is nothing weird in above "Troubleshoot Steps" 
@@ -39,22 +41,27 @@ Step 2: Identify Top Memory-Consuming Processes
 
 - Troubleshoot steps:
 
-	+ List Processes by Memory Usage: ps aux --sort=-%mem | head -n 10
+	+ List Processes by Memory Usage:
+	```ps aux --sort=-%mem | head -n 10```
 	Purpose: Displays the top processes using memory.
 	
-	+ List Processes and find Z status: ps aux | grep Z
+	+ List Processes and find Z status:
+	```ps aux | grep Z```
 	Purpose: Find if there is any zombie process.
 	![Zombies](https://github.com/user-attachments/assets/020f3327-98b6-41d1-aa97-9a23a985f095)
 
-	+ Check Services: sudo systemctl list-units --type=service --state=running
+	+ Check Services:
+	```sudo systemctl list-units --type=service --state=running```
 	Purpose: Find if there are any unnecessary services running.
 
 - Recovery steps:
-	+ Terminate Unnecessary Processes: Identify unwanted processes. 
-	  Terminate them using: sudo kill -9 <PID>
-	  In case that it keeps spamming and we cannot know about the root cause, a work-around solution 		may be running a crob job to periodically find and kill processes that have Z state.
+	+ Terminate Unnecessary Processes: Identify unwanted processes. </br>
+	  Terminate them using: </br>
+          ``` sudo kill -9 <PID>```
+	  In case that it keeps spamming and we cannot know about the root cause, a work-around solution may be running a crob job to periodically find and kill processes that have Z state.
 
-	+ Disable Unneeded Services at Boot: sudo systemctl disable <service_name>
+	+ Disable Unneeded Services at Boot:
+	```sudo systemctl disable <service_name>```
 
 Step 3: Inspect Disk Space, Inode Usage and Swap space configuration
 - Possible Causes/Scenarios:
@@ -73,9 +80,12 @@ Step 3: Inspect Disk Space, Inode Usage and Swap space configuration
 
 - Troubleshoot steps:
 
-	+ Check Disk Space Usage: df -h
-	+ Check Inode Usage: df -i
-	+ Identify Large Files: sudo find / -type f -size +100M
+	+ Check Disk Space Usage:
+	```df -h```
+	+ Check Inode Usage:
+	```df -i```
+	+ Identify Large Files:
+	```sudo find / -type f -size +100M```
 
 - Recovery steps:
 	+ Remove Unnecessary Files: Clear old logs, caches, and unnecessary files.
@@ -97,7 +107,8 @@ Step 4: Analyze NGINX Worker Processes
 
 - Troubleshoot steps:
 
-	+ Review NGINX Configuration: Open the config file: sudo nano /etc/nginx/nginx.conf
+	+ Review NGINX Configuration: Open the config file:
+	```sudo nano /etc/nginx/nginx.conf```
 	Check: worker_processes and worker_connections.
 
 - Recovery steps:
@@ -105,7 +116,8 @@ Step 4: Analyze NGINX Worker Processes
 	worker_processes auto;
 	+ Adjust worker_connections: Set to a reasonable number that compatible with chosen hardware.
 
-	+ Reload NGINX: sudo nginx -s reload
+	+ Reload NGINX:
+	```sudo nginx -s reload```
 	
 	+ Optimize NGINX Configuration:
 
@@ -127,10 +139,11 @@ Step 5: Check for Memory Leaks in NGINX or Modules
 
 - Troubleshoot steps:
 
-	+ Restart NGINX: sudo systemctl restart nginx
+	+ Restart NGINX:
+	```sudo systemctl restart nginx```
 	Observe Memory Usage Post-Restart.
 
-	+ Monitor Memory Over Time: Use top, htop, or check the monitoring tools to watch the trend of memory usage.
+	+ Monitor Memory Over Time: Use ```top, htop``` or check the monitoring tools to watch the trend of memory usage.
 
 	+ Disable Suspect Modules: Comment out or remove configurations and monitor the memory.
 
@@ -139,9 +152,10 @@ Step 5: Check for Memory Leaks in NGINX or Modules
 	+ Disable Suspect Modules: Comment out or remove configurations for non-essential modules.
 
 	+ If the system is able to update NGINX and Modules to the latest version: 
-	sudo apt update
+	```
+ 	sudo apt update
 	sudo apt install nginx
-
+	```
 	+ If the system in unable to update NGINX due to incompatibility, or it takes too much effort to change to another solution: 
 	Work around: 
 	Prepare backup nginx server.
@@ -195,7 +209,7 @@ Step 7: Examine NGINX Logs for Errors
 	+ Check disk space size:
 
 	+ Check Log File Sizes: 
-	sudo du -h /var/log/nginx/
+	```sudo du -h /var/log/nginx/```
 
 	+ Implement Log Rotation: Ensure logrotate is configured for NGINX logs.
 
@@ -204,9 +218,10 @@ Step 7: Examine NGINX Logs for Errors
 - Recovery steps:
 	
 	+ Adjust Logging Level: In nginx.conf, set logging to a less verbose level:
-	error_log /var/log/nginx/error.log warn;
+	```error_log /var/log/nginx/error.log warn;```
 
-	+ Reload NGINX Configuration: sudo nginx -s reload
+	+ Reload NGINX Configuration:
+	```sudo nginx -s reload```
 
 Step 8: Analyze Traffic Patterns for High Load or DDoS
 - Possible Causes/Scenarios:
@@ -238,8 +253,9 @@ Step 8: Analyze Traffic Patterns for High Load or DDoS
 
 	Enhance system's configuration to prevent attack to server.
 	Implement Rate Limiting: Configure nginx to limit the rate of incoming requests from each clients.
-```
-	http {
+
+	```
+ 	http {
 	    limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
 	}
 	server {
@@ -247,11 +263,10 @@ Step 8: Analyze Traffic Patterns for High Load or DDoS
 		limit_req zone=mylimit burst=20;
 	    }
 	}
-```
-	Configure Firewall Rules: Deny malcious IPs
+	```
+	+ Configure Firewall Rules: Deny malcious IPs
 
-	Consider DDoS Protection Services: Use services like Cloudflare or AWS Shield.
+	+ Consider DDoS Protection Services: Use services like Cloudflare or AWS Shield.
 
 	+ If there is no suspicious connection, recalculate the sufficient hardware.
-	Implement scaling to reduce the bottleneck from connection
-
+	Implement scaling to reduce the bottleneck from connection.
