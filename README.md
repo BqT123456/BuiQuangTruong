@@ -48,6 +48,9 @@ Ref: https://medium.com/coinmonks/how-does-a-centralised-crypto-exchange-actuall
 Problem 3:
 
 - Assume that the scenario happens in production environment
+
+- Assume that the server for NGINX has been calculated precisely according to NGINX bench mark result.
+  + Refer: https://blog.nginx.org/blog/testing-the-performance-of-nginx-and-nginx-plus-web-servers
  
 - Assume that the previous DevOps engineer followed the below document to optimize the server configuration:
 https://blog.nginx.org/blog/optimizing-web-servers-for-high-throughput-and-low-latency
