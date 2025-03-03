@@ -1,6 +1,8 @@
 # Prerequisite #
 Problem 1:
-- The machine has installed jq command with "sudo apt install jq". Somehow "sudo snap install jq" may lead to error "jq: error: Could not open file ./transaction-log.txt: Permission denied".
+- The machine has installed jq command with</br>
+```sudo apt install jq```.</br>
+Somehow ```sudo snap install jq``` may lead to error ```jq: error: Could not open file ./transaction-log.txt: Permission denied```.
 
 - The following tools are installed on the machine and can work normally: curl, xargs .
 
@@ -12,7 +14,8 @@ Problem 1:
 
 - It is understood that /output.txt and ./transaction-log.txt are in the same folder.
 
-- The solution just covered only a single API URL, it is not flexible enough for changes. If your API URL contains a placeholder pattern "{found_id}" in several places, using a generic placeholder replacement can replace all instances — even those you didn't intend to change. This can result in malformed URLs, incorrect API calls, or unexpected data retrieval.
+- The solution just covered only a single API URL, it is not flexible enough for changes. If your API URL contains a placeholder pattern </br>
+"{found_id}" in several places, using a generic placeholder replacement can replace all instances — even those you didn't intend to change. This can result in malformed URLs, incorrect API calls, or unexpected data retrieval.
 
 Ex: Consider in your transaction-log.txt
 
@@ -30,12 +33,19 @@ Problem 2:
 - Assume that the this is how crypto exchange system works:
 Ref: https://medium.com/coinmonks/how-does-a-centralised-crypto-exchange-actually-work-84a574fe0a1
 
-- The solution will cover Trading Engine system design.
-- For simplification, failure due to networking will not be weighted as high priority. Therefore, configuration for networking is neglected.
+- Assume that there is no bug in production environment.
 
+- The solution will cover Trading Engine system design. Refer:https://www.around25.com/blog/building-a-trading-engine-for-a-crypto-exchange
+  
+- For simplification and time limitation, Roles and Network configurations are not listed but will be explained briefly. </br>
+   + Role: Apply "Least-privilege permission".
+   + Network: Apply ELB in public subnet to protect our resource to be not exposed to the Internet.
+    * In-direction: Resource -> NAT Gateway -> Internet.
+    * Out-direction: Internet -> ELB -> Resource
+     ![image](https://github.com/user-attachments/assets/0072bf2e-db11-43da-a83d-ffbfcbf7a39d)
+     
 ------------------------------------------------------------------------------------------------------
 Problem 3:
-- The following tools are installed on the machine and can work normally: free
 
 - Assume that the scenario happens in production environment
  
