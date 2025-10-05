@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  ansible-master:
+    container_name: ansible-master
+    build:
+      context: ./ansible
+    volume:
+      - ./ansible:/ansible
+    working_dir: /ansible
+    networks:
+      - config-containers
+  jenkins:
+    container_name: jenkins-master
+    build:
+      context: ./jenkins
+    volume:
+      - jenkins_data:./jenkins/var/jenkins_home
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - config-containers
+volumes:
+  jenkins_data:
